@@ -1,6 +1,6 @@
 [user]
-	name = Bodaniel Jeanes
-	email = me@bjeanes.com
+	name = Colder Xihk
+	email = cncolder@gmail.com
 [merge]
 	summary = true
 	tool = opendiff
@@ -63,6 +63,6 @@
 	insteadOf = "heroku:"
 
 [github]
-	user = bjeanes
+	user = cncolder
 [init]
 	templatedir = ~/.git_template
