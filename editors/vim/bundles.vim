@@ -94,11 +94,11 @@ call vundle#rc()
   Bundle 'Gundo'
   nnoremap <Leader>u :GundoToggle<CR>
 
-  Bundle 'kien/rainbow_parentheses.vim'
-  autocmd VimEnter * RainbowParenthesesToggle
-  autocmd Syntax * RainbowParenthesesLoadRound
-  autocmd Syntax * RainbowParenthesesLoadSquare
-  autocmd Syntax * RainbowParenthesesLoadBraces
+  " Bundle 'kien/rainbow_parentheses.vim'
+  " autocmd VimEnter * RainbowParenthesesToggle
+  " autocmd Syntax * RainbowParenthesesLoadRound
+  " autocmd Syntax * RainbowParenthesesLoadSquare
+  " autocmd Syntax * RainbowParenthesesLoadBraces
 
 
   Bundle 'Tabular'
