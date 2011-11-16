@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # ~colder.bash -- Bash support for myself.
 #
 
@@ -21,16 +21,25 @@ export LC_CTYPE=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 
 # Set default editor as mate if there is.
-which mate &>/dev/null && mate="$(which mate)"
-if [[ -s $mate ]]; then
-    export EDITOR="$mate"
-    export VISUAL="$mate"
-    export GEM_OPEN_EDITOR="$mate"
-    export GIT_EDITOR="$mate"
-fi
+# which mate &>/dev/null && mate="$(which mate)"
+# if [[ -s $mate ]]; then
+    # export EDITOR="$mate"
+    # export VISUAL="$mate"
+    # export GEM_OPEN_EDITOR="$mate"
+    # export GIT_EDITOR="$mate"
+# fi
 
 # My soft bin path. To avoid sudo(/usr/local).
 export PATH=$HOME"/.usr/bin":$PATH
+
+# Set mvim as default editor.
+which mvim &>/dev/null && editor="$(which mvim)"
+if [[ -s $editor ]]; then
+  export EDITOR="$editor -f"
+  export VISUAL="$editor"
+  export GEM_OPEN_EDITOR="$editor"
+  export GIT_EDITOR="$editor -f"
+fi
 
 # Active ruby version manager.
 rvm=$HOME"/.rvm/scripts/rvm" && [[ -s $rvm ]] && . $rvm

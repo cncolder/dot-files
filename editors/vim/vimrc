@@ -46,3 +46,7 @@ if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
 
+" Import colder's config.
+if filereadable(expand('~/.vim/~colder.vim'))
+  source ~/.vim/~colder.vim
+endif
