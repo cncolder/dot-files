@@ -20,25 +20,20 @@ export LC_CTYPE=en_US.UTF-8
 # Compile as 64bit. Mac os x has upgrade to 64bit after snow leopard.
 export ARCHFLAGS="-arch x86_64"
 
-# Set default editor as mate if there is.
-# which mate &>/dev/null && mate="$(which mate)"
-# if [[ -s $mate ]]; then
-    # export EDITOR="$mate"
-    # export VISUAL="$mate"
-    # export GEM_OPEN_EDITOR="$mate"
-    # export GIT_EDITOR="$mate"
-# fi
-
 # My soft bin path. To avoid sudo(/usr/local).
 export PATH=$HOME"/.usr/bin":$PATH
 
-# Set mvim as default editor.
-which mvim &>/dev/null && editor="$(which mvim)"
-if [[ -s $editor ]]; then
+# Set default editor.
+if editor="$(which mvim)"; [[ -s "$(which mvim)" ]]; then
   export EDITOR="$editor -f"
   export VISUAL="$editor"
   export GEM_OPEN_EDITOR="$editor"
   export GIT_EDITOR="$editor -f"
+elif editor="$(which mate)"; [[ -s "$(which mate)" ]]; then
+  export EDITOR="$editor"
+  export VISUAL="$editor"
+  export GEM_OPEN_EDITOR="$editor"
+  export GIT_="$editor"
 fi
 
 # Active ruby version manager.

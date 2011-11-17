@@ -50,3 +50,4 @@ endif
 if filereadable(expand('~/.vim/~colder.vim'))
   source ~/.vim/~colder.vim
 endif
+
