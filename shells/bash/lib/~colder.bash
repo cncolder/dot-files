@@ -24,17 +24,17 @@ export ARCHFLAGS="-arch x86_64"
 export PATH=$HOME"/.usr/bin":$PATH
 
 # Set default editor.
-if editor="$(which mvim)"; [[ -s "$(which mvim)" ]]; then
-  export EDITOR="$editor -f"
-  export VISUAL="$editor"
-  export GEM_OPEN_EDITOR="$editor"
-  export GIT_EDITOR="$editor -f"
-elif editor="$(which mate)"; [[ -s "$(which mate)" ]]; then
-  export EDITOR="$editor"
-  export VISUAL="$editor"
-  export GEM_OPEN_EDITOR="$editor"
-  export GIT_="$editor"
-fi
+# if editor="$(which mvim)"; [[ -s "$(which mvim)" ]]; then
+#   export EDITOR="$editor -f"
+#   export VISUAL="$editor"
+#   export GEM_OPEN_EDITOR="$editor"
+#   export GIT_EDITOR="$editor -f"
+# elif editor="$(which mate)"; [[ -s "$(which mate)" ]]; then
+#   export EDITOR="$editor"
+#   export VISUAL="$editor"
+#   export GEM_OPEN_EDITOR="$editor"
+#   export GIT_="$editor"
+# fi
 
 # Active ruby version manager.
 rvm=$HOME"/.rvm/scripts/rvm" && [[ -s $rvm ]] && . $rvm
