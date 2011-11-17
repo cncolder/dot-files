@@ -58,8 +58,10 @@ syntax on
 
 " Directories for swp files
   " persistent undos
-    set undofile
-    set undodir=~/.vim/dirs/undos
+    if version >= 703
+      set undofile
+      set undodir=~/.vim/dirs/undos
+    endif
 
   set backupdir=~/.vim/dirs/backups
   set directory=~/.vim/dirs/swaps
