@@ -62,7 +62,6 @@ call vundle#rc()
   Bundle 'spiiph/vim-space'
   Bundle 'tpope/vim-surround'
   Bundle 'Raimondi/delimitMate'
-  Bundle 'ShowMarks7'
 
   Bundle 'YankRing.vim'
   nnoremap <silent> ,y :YRShow<CR>
