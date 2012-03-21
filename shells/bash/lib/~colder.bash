@@ -24,23 +24,25 @@ export ARCHFLAGS="-arch x86_64"
 export PATH=$HOME"/.usr/bin":$PATH
 
 # Set default editor.
-# if editor="$(which mvim)"; [[ -s "$(which mvim)" ]]; then
+# if editor="$(which mvim)"; [[ -s $editor ]]; then
 #   export EDITOR="$editor -f"
 #   export VISUAL="$editor"
 #   export GEM_OPEN_EDITOR="$editor"
 #   export GIT_EDITOR="$editor -f"
-# elif editor="$(which mate)"; [[ -s "$(which mate)" ]]; then
-#   export EDITOR="$editor"
-#   export VISUAL="$editor"
-#   export GEM_OPEN_EDITOR="$editor"
-#   export GIT_="$editor"
-# fi
+# el
+if editor="$(which mate)"; [[ -s $editor ]]; then
+  export EDITOR="$editor"
+  export VISUAL="$editor"
+  export GEM_OPEN_EDITOR="$editor"
+  export GIT_="$editor"
+fi
 
 # Active ruby version manager.
 rvm=$HOME"/.rvm/scripts/rvm" && [[ -s $rvm ]] && . $rvm
 
 # Active node version manager.
 nvm=$HOME"/.nvm/nvm.sh" && [[ -s $nvm ]] && . $nvm
+export PATH="node_modules/.bin":$PATH
 
 # FIXME: This script is too slowly. Wait 280north upgrade it.
 # Active narwhal enviriment.
