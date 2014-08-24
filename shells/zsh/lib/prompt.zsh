@@ -1,19 +1,15 @@
-autoload zsh/terminfo
-
 pr_reset="%f%u%k%s%b" # reset all codes
 
-if [ "$terminfo[colors]" -eq 256 ]; then
+pr_red="%F{red}"
+pr_blue="%F{blue}"
+pr_green="%F{green}"
+pr_grey="%B%F{black}"
+
+if [ "$(tput colors 2>/dev/null)" -eq 256 ]; then
   pr_red="%F{52}"
   pr_blue="%F{25}"
   pr_green="%F{28}"
   pr_grey="%F{59}"
-else
-  if [ "$terminfo[colors]" -eq 8 ]; then
-    pr_red="%F{red}"
-    pr_blue="%F{blue}"
-    pr_green="%F{green}"
-    pr_grey="%B%F{black}"
-  fi
 fi
 
 # VCS configuration
@@ -100,12 +96,11 @@ function precmd {
 
   local cwd="$pr_blue`prompt_pwd`$pr_reset"
   local char="%0(?.$pr_green.$pr_red)♪$pr_reset"
-  local time="$pr_grey⌚ %*$pr_reset"
+  # local time="$pr_grey⌚ %*$pr_reset"
 
   local ruby
-  which rvm-prompt &>/dev/null && ruby="❖ `rvm-prompt`"
-  which rbenv      &>/dev/null && ruby="❖ `rbenv version-name`"
-
+  ruby="$(current_ruby)"
+  [ "x$ruby" != "x" ] && ruby="❖ $ruby"
 
   local rev="$pr_grey$vcs_info_msg_0_$pr_reset"
   rev="${rev/\(git\)/±}"
@@ -116,8 +111,6 @@ function precmd {
   left=($(user_at_host) $cwd $char)
   right=($rev $ruby $time)
 
-  PS1="$left [ "
-  RPS1="] $right"
+  PS1="$left  "
+  RPS1=" $right"
 }
-
-

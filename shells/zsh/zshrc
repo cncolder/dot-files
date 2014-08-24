@@ -2,7 +2,6 @@ CURRENT_SHELL="zsh"
 SHELL_FILES="${$(readlink $HOME/.zshrc):h}"
 DOT_FILES="${SHELL_FILES:h:h}"
 
-source $SHELL_FILES/oh-my-zsh.zsh
 source $DOT_FILES/shells/bootstrap.sh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

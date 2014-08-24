@@ -1,5 +1,35 @@
 osx || return # Only for OS X
 
+alias serial="ioreg -l | grep IOPlatformSerialNumber | cut -f 10 -d' ' | cut -d'\"' -f 2 | pbcopy && echo 'Copied to clipboard'"
+
+function __setup_tmux_wrappers() {
+  local wrap="reattach-to-user-namespace"
+  local editors="VISUAL $(env | grep EDITOR | cut -d= -f1)"
+
+  alias vim="$wrap vim"
+  alias mvim="$wrap mvim"
+
+  for editor in $editors; do
+    eval "$editor='$wrap $(eval "echo \$$editor")'"
+  done
+}
+
+if which reattach-to-user-namespace >/dev/null 2>&1; then
+  # and http://writeheavy.com/2011/10/23/reintroducing-tmux-to-the-osx-clipboard.html
+  [ -n "$TMUX" ] && __setup_tmux_wrappers
+else
+  if [ -n "$TMUX" ]; then
+    echo "Installing pbpaste/pbcopy wrappers to get them working in Tmux..."
+    formula="--HEAD --wrap-pbcopy-and-pbpaste --wrap-launchctl reattach-to-user-namespace"
+    brew install $formula >/dev/null 2>&1 && echo "Done." || echo "Failed."
+    __setup_tmux_wrappers
+  fi
+fi
+
+if [ -z "$JAVA_HOME" -a -d /System/Library/Frameworks/JavaVM.framework/Home ]; then
+  export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+fi
+
 alias o='open .'
 
 # replacement netstat cmd to find ports used by apps on OS X

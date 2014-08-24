@@ -1,27 +1,12 @@
 alias reload="source ~/.zshrc"
 
+[[ $EMACS = t ]] && unsetopt zle
+
 fpath=($SHELL_FILES/completions $fpath)
 
 # Option-Left + Option-Right for moving word-by-word in OS X
 bindkey "\e\e[C" vi-forward-word
 bindkey "\e\e[D" vi-backward-word
-
-# # forward/back directories with Option+Up/Down
-# function back-dir {
-#   cd -1 >/dev/null
-#   echo
-# }
-#
-# function fwd-dir {
-#   cd +1 >/dev/null
-#   echo
-# }
-#
-# zle -N back-dir back-dir
-# zle -N fwd-dir fwd-dir
-#
-# bindkey "\e\e[A" back-dir
-# bindkey "\e\e[B" fwd-dir
 
 # http://www.scannedinavian.com/~shae/shae.zshrc
 # These are options I've copied but yet to totally investigate if it's what I want
@@ -58,3 +43,4 @@ autoload -U select-word-style
 select-word-style bash
 
 REPORTTIME=2
+TIMEFMT="%*Es total, %U user, %S system, %P cpu"

@@ -49,3 +49,11 @@ doc/tags
 .bundle/*
 .rbx/
 .netrwhist
+
+# emacs
+.#*
+\#*#
+*.pyc
+.node_modules
+./node_modules
+node_modules

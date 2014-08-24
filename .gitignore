@@ -2,3 +2,6 @@
 .rake_tasks
 Transmission Remote GUI
 vim/bundle/*
+Fritzing
+hub
+camlistore

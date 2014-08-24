@@ -3,44 +3,28 @@ set nocompatible
 source ~/.vim/ui.vim
 source ~/.vim/autocommands.vim
 source ~/.vim/bundles.vim
+source ~/.vim/ruby.vim
+
+set backupdir=~/.vim/dirs/backups       " store file backups here
+set backupskip=/tmp/*,/private/tmp/*"   " don't use backups for tmp files
+set directory=~/.vim/dirs/swaps         " store swap files here
+set undofile                            " persistent undos
+set undodir=~/.vim/dirs/undos           " where to store undo histories
 
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
-
-" This helps with RVM etc
-set shell=zsh
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 set tags=tmp/tags;/,./tmp/tags;/,tags;/,./tags;/
 
-" ,w - write file
-nnoremap <silent> ,w :write<CR>
-
-" ,N - toggle line numbers
-function! ToggleLineNumbers()
-  if &number
-    set nonumber
-  elseif &relativenumber
-    set number
-  else
-    set relativenumber
-  endif
-endfunction
-nnoremap <silent> ,N :call ToggleLineNumbers()<CR>
-
-" Theme development help
-nmap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+set pastetoggle=<Leader>p
+map <leader>p :set invpaste paste?<CR>
 
 " Quick editing of common dot-files
 map <Leader>vv :edit $MYVIMRC<CR>
 map <Leader>gg :edit $MYGVIMRC<CR>
 map <Leader>.. :cd ~/.config<CR>:enew<CR>
-
-set pastetoggle=<Leader>p
-map <leader>p :set invpaste paste?<CR>
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local

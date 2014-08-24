@@ -1,14 +1,11 @@
-if !has('conceal')
-  finish
-endif
+" RSpec
 
-syntax keyword rubyControl not conceal cchar=¬
-syntax keyword rubyKeyword lambda conceal cchar=λ
-syntax match rubyGreaterThanOrEqual ">=" conceal cchar=≥
-syntax match rubyLessThanOrEqual "<=" conceal cchar=≤
-syntax match rubyHashRocket "=>" conceal cchar=→
+  " Syntax highlighting
+    if expand('%') =~# '_spec\.rb$'
+      syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject let shared_context shared_examples_for
+    endif
 
-hi link rubyHashRocket level16none
+    hi def link rubyRspec Function
 
-set conceallevel=2
-
+  " Focus folding on spec"
+    nmap <silent> <Leader>rf mr:set foldmethod=syntax<CR>zMzv?\v^\s*(it\|example)<CR>zz:noh<CR>`r:delmarks r<CR>
