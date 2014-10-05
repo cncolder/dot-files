@@ -49,21 +49,24 @@ if editor="$(which mate)"; [[ -s $editor ]]; then
 fi
 
 # Active ruby version manager.
-rvm=$HOME"/.rvm/scripts/rvm" && [[ -s $rvm ]] && . $rvm
+# rvm=$HOME"/.rvm/scripts/rvm" && [[ -s $rvm ]] && . $rvm
 
 # Active node version manager.
 nvm=$HOME"/.nvm/nvm.sh" && [[ -s $nvm ]] && . $nvm
 export PATH="node_modules/.bin":$PATH
 
+# n
+# export N_PREFIX=$HOME"/.usr"
+
 # FIXME: This script is too slowly. Wait 280north upgrade it.
 # Active narwhal enviriment.
 # activate=$HOME"/.usr/narwhal/bin/activate" && [[ -s $activate ]] && . $activate
-export NARWHAL_ENGINE=jsc
-export CAPP_BUILD="$HOME/Documents/Github/cappuccino/Build"
-
-export DYLD_LIBRARY_PATH="/usr/local/oracle/instantclient_10_2"
-export PATH=$DYLD_LIBRARY_PATH:$PATH
-export SQLPATH="/usr/local/oracle/instantclient_10_2"
+# export NARWHAL_ENGINE=jsc
+# export CAPP_BUILD="$HOME/Documents/Github/cappuccino/Build"
+#
+# export DYLD_LIBRARY_PATH="/usr/local/oracle/instantclient_10_2"
+# export PATH=$DYLD_LIBRARY_PATH:$PATH
+# export SQLPATH="/usr/local/oracle/instantclient_10_2"
 # export TNS_ADMIN="/usr/local/oracle/network/admin"
 # export NLS_LANG="AMERICAN_AMERICA.UTF8"
 
